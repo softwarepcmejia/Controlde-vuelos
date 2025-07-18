@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programar Vuelo | Control de Vuelos</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link href="../css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Navbar modular -->
+  <div id="navbar-container"></div>
+
+  <!-- Formulario de programación de vuelo -->
+  <div class="container mt-5 mb-5">
+    <h2 class="mb-4">Programar Vuelo</h2>
+    <form id="vueloForm">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Empleado</label>
+          <select class="form-select" name="empleadoId" id="empleadoId" required></select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Tipo de Vuelo</label>
+          <select class="form-select" name="tipo">
+            <option value="ida">Ida</option>
+            <option value="regreso">Regreso</option>
+            <option value="ida y regreso">Ida y regreso</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Fecha de Ida</label>
+          <input type="date" class="form-control" name="fechaIda" required />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Fecha de Regreso</label>
+          <input type="date" class="form-control" name="fechaRegreso" />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Ciudad de Origen</label>
+          <select class="form-select" name="origen" required>
+            <option value="">Selecciona una ciudad</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Guyana">Guyana</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Ciudad de Destino</label>
+          <select class="form-select" name="destino" required>
+            <option value="">Selecciona una ciudad</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Guyana">Guyana</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Observaciones</label>
+          <textarea class="form-control" name="observaciones" rows="2"></textarea>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Guardar Vuelo</button>
+      </div>
+    </form>
+    <div id="mensaje" class="mt-3"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="../js/navbar.js" defer></script>
+  <script src="../js/vuelos.js" defer></script>
+</body>
+</html>

@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Función para redirigir al formulario de edición
 function editarVuelo(id) {
-  window.location.href = `editar-vuelo.html?id=${id}`;
+  window.location.href = `../frontend/pages/editar-vuelo.html?id=${id}`;
 }
 
 // Función para eliminar vuelo con confirmación

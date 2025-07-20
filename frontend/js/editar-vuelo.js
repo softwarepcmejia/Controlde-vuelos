@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (err) {
     alert('Error al cargar el vuelo');
     console.error(err);
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
   }
 });
 
@@ -62,7 +62,7 @@ form.addEventListener('submit', async (e) => {
     if (!res.ok) throw new Error('Error al actualizar');
 
     alert('Vuelo actualizado correctamente');
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
   } catch (err) {
     alert('Error al actualizar vuelo');
     console.error(err);

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let vuelos = [];
 
   try {
-    const res = await fetch("http://localhost:4000/api/vuelos");
+    const res = await fetch(`${API_BASE}/api/vuelos`);
     vuelos = await res.json();
 
     mostrarVuelos(vuelos);
@@ -62,7 +62,7 @@ async function eliminarVuelo(id) {
   if (!confirmar) return;
 
   try {
-    const res = await fetch(`http://localhost:4000/api/vuelos/${id}`, {
+    const res = await fetch(`${API_BASE}/api/vuelos/${id}`, {
       method: "DELETE",
     });
 

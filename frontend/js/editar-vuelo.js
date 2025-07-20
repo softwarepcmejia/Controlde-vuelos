@@ -11,9 +11,16 @@ const destinoInput = document.getElementById('destino');
 const observacionesInput = document.getElementById('observaciones');
 const estadoInput = document.getElementById('estado');
 
+function corregirZonaHoraria(fechaStr) {
+  const fecha = new Date(fechaStr);
+  fecha.setMinutes(fecha.getMinutes() + fecha.getTimezoneOffset());
+  return fecha.toISOString();
+}
+
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const res = await fetch(`http://localhost:3000/api/vuelos/${vueloId}`);
+    const res = await fetch(`${API_BASE}/api/vuelos/${vueloId}`);
     if (!res.ok) throw new Error('Vuelo no encontrado');
     const vuelo = await res.json();
 
@@ -28,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (err) {
     alert('Error al cargar el vuelo');
     console.error(err);
-    window.location.href = './index.html';
+    window.location.href = 'index.html';
   }
 });
 
@@ -37,8 +44,8 @@ form.addEventListener('submit', async (e) => {
 
   const vueloActualizado = {
     tipo: tipoInput.value,
-    fechaIda: fechaIdaInput.value,
-    fechaRegreso: fechaRegresoInput.value || null,
+    fechaIda: corregirZonaHoraria(fechaIdaInput.value),
+    fechaRegreso: fechaRegresoInput.value ? corregirZonaHoraria(fechaRegresoInput.value) : null,
     origen: origenInput.value,
     destino: destinoInput.value,
     observaciones: observacionesInput.value,
@@ -46,7 +53,7 @@ form.addEventListener('submit', async (e) => {
   };
 
   try {
-    const res = await fetch(`http://localhost:3000/api/vuelos/${vueloId}`, {
+    const res = await fetch(`${API_BASE}/api/vuelos/${vueloId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(vueloActualizado)
@@ -55,7 +62,7 @@ form.addEventListener('submit', async (e) => {
     if (!res.ok) throw new Error('Error al actualizar');
 
     alert('Vuelo actualizado correctamente');
-    window.location.href = '../index.html';
+    window.location.href = 'index.html';
   } catch (err) {
     alert('Error al actualizar vuelo');
     console.error(err);

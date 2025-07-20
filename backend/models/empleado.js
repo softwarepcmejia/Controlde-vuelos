@@ -1,18 +1,44 @@
 const mongoose = require('mongoose');
 
 const EmpleadoSchema = new mongoose.Schema({
-  nombre: { type: String, required: true },
-  cedula: { type: String, required: true },
+  nombre: {
+    type: String,
+    required: [true, 'El nombre es obligatorio'],
+    match: [/^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$/, 'El nombre solo puede contener letras y espacios']
+  },
+  cedula: {
+    type: String,
+    required: [true, 'La cédula es obligatoria'],
+    match: [/^\d+$/, 'La cédula debe contener solo números']
+  },
   cargo: { type: String },
   fechaIngreso: { type: Date },
-  telefono: { type: String },
+  telefono: {
+    type: String,
+    match: [/^\d+$/, 'El teléfono debe contener solo números'],
+  },
   correo: {
     type: String,
-    match: [/^\S+@\S+\.\S+$/, 'Correo no válido']
+    required: [true, 'El correo es obligatorio'],
+    match: [/^\S+@\S+\.\S+$/, 'El formato del correo no es válido']
   },
   direccion: { type: String },
-  genero: { type: String },
-  nivelEducativo: { type: String },
+  genero: {
+    type: String,
+    required: [true, 'El género es obligatorio'],
+    enum: {
+      values: ['Masculino', 'Femenino'],
+      message: 'El género debe ser Masculino o Femenino'
+    }
+  },
+  nivelEducativo: {
+    type: String,
+    enum: {
+      values: ['Bachiller', 'Técnico', 'Tecnólogo', 'Profesional', 'Otros', ''],
+      message: 'El nivel educativo no es válido'
+    },
+    default: ''
+  },
   cursosCertificados: { type: String },
   estadoCivil: { type: String },
   nacionalidad: { type: String },

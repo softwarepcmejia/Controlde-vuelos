@@ -1,5 +1,7 @@
 const Vuelo = require('../models/vuelo');
 const vueloService = require('../services/vueloService');
+const { enviarCorreoVuelo } = require('../utils/email');
+const empleadoService = require('../services/empleadoService');
 
 // Crear un nuevo vuelo
 const crearVuelo = async (req, res) => {
@@ -51,6 +53,12 @@ const actualizarVuelo = async (req, res) => {
 
     if (!vuelo) return res.status(404).json({ error: 'Vuelo no encontrado para actualizar' });
 
+    // Obtener el empleado y reenviar correo
+    const empleado = await empleadoService.obtenerEmpleadoPorId(vuelo.empleadoId);
+    if (empleado) {
+      await enviarCorreoVuelo(empleado, vuelo);
+    }
+
     res.status(200).json({
       mensaje: 'Vuelo actualizado correctamente',
       vuelo
@@ -76,11 +84,10 @@ const eliminarVuelo = async (req, res) => {
   }
 };
 
-
 module.exports = {
   crearVuelo,
   obtenerVuelos,
   obtenerVueloPorId,
   actualizarVuelo,
-  eliminarVuelo // 
+  eliminarVuelo
 };

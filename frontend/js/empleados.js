@@ -6,7 +6,7 @@ document.getElementById("empleadoForm").addEventListener("submit", async functio
   data.tieneHijos = data.tieneHijos === 'true';
 
   try {
-    const response = await fetch("http://localhost:4000/api/empleados", {
+    const response = await fetch(`${API_BASE}/api/empleados`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)

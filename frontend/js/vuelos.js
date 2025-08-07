@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       item.dataset.id = emp._id;
 
       // Selección por doble clic
-      item.ondblclick = () => {
+      item.onclick = () => {
         buscadorInput.value = `${emp.nombre} - ${emp.cedula}`;
         inputEmpleadoId.value = emp._id;
         sugerenciasList.innerHTML = "";

@@ -8,7 +8,14 @@ const vuelosRoutes = require('./routes/vuelos'); // NUEVO
 dotenv.config({ path: __dirname + '/.env' });
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: ['https://controldevuelos.netlify.app'], // agrega aquí tu dominio real
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.use('/api/empleados', empleadosRoutes);

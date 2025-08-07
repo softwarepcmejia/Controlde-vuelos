@@ -1,2 +1,5 @@
-// frontend/js/config.js
-const API_BASE = "http://localhost:4000";
+const isProduction = true;
+
+const API_BASE = isProduction
+  ? "https://controlde-vuelos.onrender.com"
+  : "http://localhost:4000";

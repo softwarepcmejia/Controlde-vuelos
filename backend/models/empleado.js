@@ -59,6 +59,18 @@ const EmpleadoSchema = new mongoose.Schema({
   },
   codigoEmpleado: { type: String },
   contactoEmergencia: { type: String },
+  parentesco: {
+    type: String,
+    required: [true, 'El parentesco es obligatorio'],
+    enum: {
+      values: ['Conyuge', 'Padre', 'Madre', 'Hermano', 'Hermana', 'Hijo', 'Hija', 'Abuelo', 'Abuela', 'Amigo', 'Amiga'],
+      message: 'Debe elegir un parentesco'
+    }
+  },
+  numeroContacto: {
+    type: String,
+    match: [/^\d+$/, 'El teléfono debe contener solo números'],
+  },
   udhl: {
     type: String,
     enum: ['Sí', 'No']

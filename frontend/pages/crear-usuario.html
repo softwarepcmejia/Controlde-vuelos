@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-6">
           <label class="form-label">Cédula</label>
-          <input type="text" class="form-control" name="cedula" required pattern="^[0-9]+$" title="Solo se permiten números" />
+          <input type="number" class="form-control" name="cedula" required pattern="^[0-9]+$" title="Solo se permiten números" />
         </div>
         <div class="col-md-6">
           <label class="form-label">Cargo</label>
@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-6">
           <label class="form-label">Teléfono</label>
-          <input type="text" class="form-control" name="telefono" required pattern="^[0-9]+$" title="Solo se permiten números" />
+          <input type="number" class="form-control" name="telefono" required pattern="^[0-9]+$" title="Solo se permiten números" />
         </div>
         <div class="col-md-6">
           <label class="form-label">Correo</label>
@@ -117,8 +117,29 @@
           <input type="text" class="form-control" name="codigoEmpleado" />
         </div> -->
         <div class="col-md-6">
-          <label class="form-label">Contacto de Emergencia</label>
+          <label class="form-label" >Nombre Contacto de Emergencia</label>
           <input type="text" class="form-control" name="contactoEmergencia" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Parentesco</label>
+          <select class="form-select" name="parentesco" required>
+            <option value="">Selecciona el parentesco</option>
+            <option value="Conyuge">Cónyuge</option>
+            <option value="Padre">Padre</option>
+            <option value="Madre">Madre</option>
+            <option value="Hemano">Hemano</option>
+            <option value="Hemana">Hemana</option>
+            <option value="Hijo">Hijo</option>
+            <option value="Hija">Hija</option>
+            <option value="Abuelo">Abuelo</option>
+            <option value="Abuela">Abuela</option>
+            <option value="Amigo">Amigo</option>
+            <option value="Amiga">Amiga</option>
+          </select>
+        </div> 
+        <div class="col-md-6">
+          <label class="form-label" >Número de Contacto</label>
+          <input type="number" class="form-control" name="numeroContacto" required pattern="^[0-9]+$" title="Solo se permiten números" />
         </div>
         <!-- <div class="col-md-6">
           <label class="form-label">UDHL</label>

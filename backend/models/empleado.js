@@ -63,7 +63,7 @@ const EmpleadoSchema = new mongoose.Schema({
     type: String,
     required: [true, 'El parentesco es obligatorio'],
     enum: {
-      values: ['Conyuge', 'Padre', 'Madre', 'Hermano', 'Hermana', 'Hijo', 'Hija', 'Abuelo', 'Abuela', 'Amigo', 'Amiga'],
+      values: ['Conyuge', 'Padre', 'Madre', 'Hermano', 'Hermana', 'Hijo', 'Hija', 'Abuelo', 'Abuela', 'Amigo', 'Amiga', 'Otro'],
       message: 'Debe elegir un parentesco'
     }
   },
